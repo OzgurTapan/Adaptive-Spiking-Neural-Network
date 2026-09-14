@@ -19,8 +19,8 @@ This repository contains a pure NumPy implementation of a modular Adaptive Spiki
 
 
 ## 🛠️ Repository Structure & Prerequisites
-* `ASN_Main.py`: The main execution pipeline that handles recursive image discovery, strict Min-Max scaling preprocessing, bounding clips to protect Poisson encoding, and the training loop.
-* `ASN_Model.py`: Contains the `ASNConfig` dataclass for hyperparameter management and the core `AdaptiveSpikingNetwork` class, which handles LIF membrane updates, threshold adaptations, and zero-copy sliding window patch extraction.
+* `asn_main.py`: The main execution pipeline that handles recursive image discovery, strict Min-Max scaling preprocessing, bounding clips to protect Poisson encoding, and the training loop.
+* `asn_model.py`: Contains the `ASNConfig` dataclass for hyperparameter management and the core `AdaptiveSpikingNetwork` class, which handles LIF membrane updates, threshold adaptations, and zero-copy sliding window patch extraction.
 * numpy (For matrix operations and network math)
 * Pillow (PIL) (For image loading and spatial resampling)
 
@@ -28,12 +28,12 @@ This repository contains a pure NumPy implementation of a modular Adaptive Spiki
 
 ## ⚙️ Execution & Usage
 
-1. To run the pipeline, ensure both `ASN_Main.py` and `ASN_Model.py` are saved in the same directory, along with an optional `./dataset` folder.
+1. To run the pipeline, ensure both `asn_main.py` and `asn_model.py` are saved in the same directory, along with an optional `./dataset` folder.
 (supported image extensions: `.png`, `.jpg`, `.jpeg`, `.bmp`, `.tiff`)
 (nested subfolders are automatically scanned recursively)
 2. Execute the main script to process the images and begin the SNN training simulation:
 ```
-python ASN_Main.py
+python asn_main.py
 ```
 3. If the dataset directory is empty or missing, the pipeline automatically falls back to running synthetic test tensors to ensure execution.
 4. Upon completion, the network saves the learned synaptic weights and adaptive firing thresholds to a compressed archive named asn_weights.npz.
