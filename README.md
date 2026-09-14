@@ -38,11 +38,11 @@ python ASN_Main.py
 3. If the dataset directory is empty or missing, the pipeline automatically falls back to running synthetic test tensors to ensure execution.
 4. Upon completion, the network saves the learned synaptic weights and adaptive firing thresholds to a compressed archive named asn_weights.npz.
 5. To continue using your trained weights in ASN_Main.py, you can configure the file to automatically load them at startup by setting the LOAD_WEIGHTS_PATH variable under the configuration & parameters.  
-Here is how you update the top configuration section in ASN_Main.py:  
+* Here is how you update the top configuration section in ASN_Main.py:  
 DATA_DIR = "./dataset"      # Path to root dataset directory. 
 LOAD_WEIGHTS_PATH = "asn_weights.npz"    # Set this to your saved weights file path  
 SAVE_WEIGHTS_PATH = "asn_weights.npz"    # Path where updated weights will be saved  
-Once loaded, the network resumes its training cycle or inference passes using the pre-existing synaptic weights and adaptive firing thresholds.  
+* Once loaded, the network resumes its training cycle or inference passes using the pre-existing synaptic weights and adaptive firing thresholds.  
 
 ---
 
