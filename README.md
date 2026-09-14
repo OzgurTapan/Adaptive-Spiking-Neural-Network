@@ -10,7 +10,7 @@ This repository contains a pure NumPy implementation of a modular Adaptive Spiki
 
 ## 📐 Core Architecture
 * **Pure NumPy Implementation:** The entire pipeline, from feature extraction to synaptic weight updates, is optimized using vectorized NumPy operations without reliance on external machine learning libraries.
-* **Dynamic Gabor Filter Bank:** Generates a custom Gabor feature bank dynamically to extract spatial frequencies and orientations.
+* **Dynamic Gabor Filter Bank:** Generates a custom gabor feature bank dynamically to extract spatial frequencies and orientations.
 * **Leaky Integrate-and-Fire (LIF) Dynamics:** Neurons simulate biological membrane potential leak and integrate input currents over time to generate rate-coded Poisson spikes.
 * **Homeostatic Plasticity & Learning:** Features adaptive firing thresholds to maintain target firing rates alongside plastic synaptic weight updates with multiplicative decay.
 * **Custom Spatial Convolution:** Implements 2D spatial convolution with dynamic edge reflection and padding to preserve strict spatial dimensions during feature extraction.
@@ -57,10 +57,10 @@ All network geometry, temporal steps, gabor configurations, and bio-spiking lear
 | **`time_steps`** | `20` | Duration of the simulation window per sample in timesteps. |
 | **`epochs`** | `1` | Total number of training passes over the full dataset. |
 | **`n_neurons`** | `100` | Number of independent spiking neurons allocated per spatial patch group. |
-| **`gabor_scales`** | `6` | Number of wavelength/frequency variations in the Gabor filter bank. |
+| **`gabor_scales`** | `6` | Number of wavelength/frequency variations in the gabor filter bank. |
 | **`gabor_angles`** | `8` | Number of orientation angle divisions across the filter bank. |
 | **`gabor_phases`** | `1` | Phase shift divisions (1 = cosine, 2 = cosine + sine). |
-| **`gabor_ksize`** | `11` | Spatial grid dimensions (in pixels) for the square Gabor kernels. |
+| **`gabor_ksize`** | `11` | Spatial grid dimensions (in pixels) for the square gabor kernels. |
 | **`patch_height`** | `10` | Height dimension of local image sub-window patches. |
 | **`patch_width`** | `10` | Width dimension of local image sub-window patches. |
 | **`patch_step`** | `10` | Sliding stride step size across spatial dimensions. |
@@ -71,3 +71,9 @@ All network geometry, temporal steps, gabor configurations, and bio-spiking lear
 | **`p_target`** | `0.05` | Target biological firing rate for homeostatic regulation (5%). |
 | **`initial_thresh_val`** | `5.0` | Starting firing threshold barrier for newly initialized neurons. |
 | **`min_thresh_val`** | `1.0` | Minimum threshold lower floor preventing homeostatic collapse. |
+
+---
+
+# Important Rule for Loading Weights
+
+* When loading weights, the shape of the saved tensors must match your current ASNConfig settings (such as n_neurons, image dimensions, patch sizes, and gabor filter setups). The built-in safety check will raise an assertion error if there is a shape mismatch between the saved file and your current configuration.
