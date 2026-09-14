@@ -74,6 +74,6 @@ All network geometry, temporal steps, gabor configurations, and bio-spiking lear
 
 ---
 
-# Important Rule for Loading Weights
+## Important Rule for Loading Weights
 
 * When loading weights, the shape of the saved tensors must match your current ASNConfig settings (such as n_neurons, image dimensions, patch sizes, and gabor filter setups). The built-in safety check will raise an assertion error if there is a shape mismatch between the saved file and your current configuration.
